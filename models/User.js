@@ -19,6 +19,28 @@ email:{
 password:{
     type:String,
     required: true,
-    trim:true,
+    
+},
+accountType:{
+    type: String,
+    enum:["Admin" ,"Student", "Instructor"],
+},
+additionalDetails:{
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: "Profile",
+},
+courses:[{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Course",
 }
+],
+image:[
+    {
+        type: String,
+        ref:"CourseProgress",
+    }
+]
+
 });
+module.exports =mongoose.model("User", userSchema)
